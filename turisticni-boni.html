@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>DN1</title>
+    <script src="skripte/midpoint-util.js"></script>
+    <script src="skripte/skripta.js"></script>
+    <link rel="stylesheet" href="css/stili.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <link rel="icon" href="./favicon.png"/>
+</head>
+
+<body>
+<meni>
+    <korak id="osebe" style="background-color: #f2f2f2">
+        <input type="radio" name="radioOdgovor" id="prvi" value="osebe" onclick="izberiKorak(this)" checked/>
+        <label for="prvi"><i class="fas fa-users"></i>Osnovni podatki</label>
+        <div class="odmik">
+            <opomba>Za izračun skupne vrednosti bona izberite število oseb in nočitev.</opomba>
+            <input id="odrasli" class="rob senca" type="number" min="0" max="100" value="2" width="30%"/> x <i class="fas fa-male"></i> odrasli <br/>
+            <input id="otroci" class="rob senca" type="number" min="0" max="100" value="1" width="30%"/> x <i class="fas fa-baby"></i> otrok <br/>
+            <input id="nocitev" class="rob senca" type="number" min="1" max="100" value="3" width="30%"/> x <i class="fas fa-bed"></i> nočitev <br/>
+            <div id="izracun" class="desno" style="margin-top: 10px">
+                <label>Bon skupaj za: <i class="fas fa-money-bill-wave"></i> </label><label class="vsota">...</label> €
+            </div>
+        </div>
+    </korak>
+
+    <korak id="parki">
+        <input type="radio" name="radioOdgovor" id="drugi" value="parki" onclick="izberiKorak(this)"/>
+        <label for="drugi"><i class="fas fa-tree"></i>Interesni parki</label>
+        <div class="odmik">
+            <opomba>Na zemljevidu izberite 2 parka.</opomba>
+            <table id="tabelaParkov"></table>
+        </div>
+    </korak>
+
+    <korak id="hoteli">
+        <input type="radio" name="radioOdgovor" id="tretji" value="hoteli" onclick="izberiKorak(this)"/>
+        <label for="tretji"><i class="fas fa-hotel"></i>Hoteli</label> <br/>
+        <div class="odmik">
+            <opomba>Izberite razdaljo za prikaz bližnjih hotelov in podrobnosti najbližjega hotela.</opomba>
+            <input type="number" class="rob senca" id="radij" value="10" min="10" max="30"/> km
+            <input type="button" class="rob senca" value="Najbližji hotel" id="najblizjiHotel">
+        </div>
+    </korak>
+</meni>
+
+<telo id="mapa_id" class="rob senca"></telo>
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</body>
+</html>
